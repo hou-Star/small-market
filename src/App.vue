@@ -26,14 +26,21 @@
   margin:0px;
   padding:0px;
 }
+#box{
+  background-color:#eee;
+}
 ul{
   width:100%;
-  height:30px;
+  height:50px;
   display:flex;
   list-style:none;
   position:fixed;
   left:0;
   bottom: 0;
+  color:gray;
+
+  background-color:white;
+
   li{
     flex:1;
     text-align: center;
@@ -42,4 +49,6 @@ ul{
 .myactive{
   color:red;
 }
+
+
 </style>

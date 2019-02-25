@@ -3,6 +3,9 @@ import Router from 'vue-router'
 import Home from './views/Home.vue' //单文件组件
 import Classify from './views/Classify.vue'
 import Mine from './views/Mine.vue'
+import Register from './views/Register.vue'
+import Info from './views/Info.vue' 
+import Update from './views/Update.vue'
 
 Vue.use(Router)
 
@@ -25,6 +28,21 @@ export default new Router({
       name: 'mine',
       component: Mine
     },
+    {
+      path: '/register',
+      name: 'register',
+      component: Register
+    },
+    {
+      path: '/info',
+      name: 'info',
+      component: Info
+    },  
+    {
+      path: '/update',
+      name: 'update',
+      component: Update
+    },       
     {
       path: '/',
       redirect: '/home'
