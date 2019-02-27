@@ -24,7 +24,30 @@
   	    <el-button>取消</el-button>
   	  </el-form-item>
 
+  	  <el-form-item>
+  	  	<el-upload
+  	  	  action="https://jsonplaceholder.typicode.com/posts/"
+  	  	  list-type="picture-card"
+  	  	  :on-preview="handlePictureCardPreview"
+  	  	  :on-remove="handleRemove">
+  	  	  <i class="el-icon-plus"></i>
+  	  	</el-upload>
+  	  	<el-dialog :visible.sync="dialogVisible">
+  	  	  <img width="100%" :src="dialogImageUrl" alt="">
+  	  	</el-dialog>
+  	  	
+		</el-form-item>
   	</el-form>
+<!--   	<el-upload
+  	  action="https://jsonplaceholder.typicode.com/posts/"
+  	  list-type="picture-card"
+  	  :on-preview="handlePictureCardPreview"
+  	  :on-remove="handleRemove">
+  	  <i class="el-icon-plus"></i>
+  	</el-upload>
+  	<el-dialog :visible.sync="dialogVisible">
+  	  <img width="100%" :src="dialogImageUrl" alt="">
+  	</el-dialog> -->
   </div>
 </template>
 
@@ -32,11 +55,11 @@
 // @ is an alias to /src
 import Vue from 'vue';
 import 'element-ui/lib/theme-chalk/index.css';
-import { Button, Select,Input, Form, FormItem,Option } from 'element-ui';
+import { Button, Select,Input, Form, FormItem,Option, Upload } from 'element-ui';
 
 Vue.component(Button.name, Button);
 Vue.component(Select.name, Select);
-// Vue.component(Upload.name, Upload);
+Vue.component(Upload.name, Upload);
 Vue.component(Form.name, Form);
 Vue.component(FormItem.name, FormItem);
 Vue.component(Input.name, Input);
@@ -46,8 +69,8 @@ export default {
 	data() {
 	  return {
 	  	//上传图片的数据
-	    // dialogImageUrl: '',
-	    // dialogVisible: false,
+	    dialogImageUrl: '',
+	    dialogVisible: false,
 
 	    //提交表单的数据
 	    form: {
