@@ -5,27 +5,22 @@
   	    <el-input v-model="form.name"></el-input>
   	  </el-form-item>
 		<el-form-item label="商品类别">
-		    <el-select v-model="form.region" placeholder="请选择商品类别">
-		      <el-option label="衣服" value="shanghai"></el-option>
-		      <el-option label="书籍" value="beijing"></el-option>
+		    <el-select v-model="form.region1" placeholder="请选择商品类别">
+		      <el-option label="衣服" value="衣服"></el-option>
+		      <el-option label="书籍" value="书籍"></el-option>
 		    </el-select>
 		  </el-form-item>
 		  <el-form-item label="几成新">
-		      <el-select v-model="form.region" placeholder="请选择商品类别">
-		        <el-option label="1" value="shanghai"></el-option>
-		        <el-option label="2" value="beijing"></el-option>
+		      <el-select v-model="form.region2" placeholder="请选择商品类别">
+		        <el-option label="1" value="1"></el-option>
+		        <el-option label="2" value="2"></el-option>
 		      </el-select>
 		    </el-form-item>
 		  <el-form-item label="商品描述">
 		     <el-input type="textarea" v-model="form.desc"></el-input>
 		   </el-form-item>
-  	  <el-form-item>
-  	    <el-button type="primary" @click="onSubmit">立即创建</el-button>
-  	    <el-button>取消</el-button>
-  	  </el-form-item>
-
-  	  <el-form-item>
-  	  	<el-upload
+  	  <!-- <el-form-item> -->
+<!--   	  	<el-upload
   	  	  action="https://jsonplaceholder.typicode.com/posts/"
   	  	  list-type="picture-card"
   	  	  :on-preview="handlePictureCardPreview"
@@ -34,9 +29,14 @@
   	  	</el-upload>
   	  	<el-dialog :visible.sync="dialogVisible">
   	  	  <img width="100%" :src="dialogImageUrl" alt="">
-  	  	</el-dialog>
+  	  	</el-dialog> -->
   	  	
-		</el-form-item>
+		<!-- </el-form-item> -->
+<!--   	  <el-form-item>
+  	    <el-button type="primary" @click="onSubmit">立即创建</el-button>
+  	    <el-button>取消</el-button>
+  	  </el-form-item> -->
+
   	</el-form>
 <!--   	<el-upload
   	  action="https://jsonplaceholder.typicode.com/posts/"
@@ -48,6 +48,11 @@
   	<el-dialog :visible.sync="dialogVisible">
   	  <img width="100%" :src="dialogImageUrl" alt="">
   	</el-dialog> -->
+  	<input type="file" name="we" ref="inputfile"/>
+  	<el-row>
+  		<el-button type="primary" @click="onSubmit">立即创建</el-button>
+  		<el-button>取消</el-button>  		
+  	</el-row>
   </div>
 </template>
 
@@ -55,7 +60,8 @@
 // @ is an alias to /src
 import Vue from 'vue';
 import 'element-ui/lib/theme-chalk/index.css';
-import { Button, Select,Input, Form, FormItem,Option, Upload } from 'element-ui';
+import { Button, Select,Input, Form, FormItem,Option, Upload, Dialog, Row } from 'element-ui';
+import axios from 'axios';
 
 Vue.component(Button.name, Button);
 Vue.component(Select.name, Select);
@@ -64,24 +70,29 @@ Vue.component(Form.name, Form);
 Vue.component(FormItem.name, FormItem);
 Vue.component(Input.name, Input);
 Vue.component(Option.name, Option);
+Vue.component(Dialog.name, Dialog);
+Vue.component(Row.name, Row);
 
 export default {
 	data() {
 	  return {
 	  	//上传图片的数据
-	    dialogImageUrl: '',
+	    dialogImageUrl: 'aa',
 	    dialogVisible: false,
 
 	    //提交表单的数据
 	    form: {
 	      name: '',
-	      region: '',
+	      region1: '',
+	      region2: '',
 	      date1: '',
 	      date2: '',
 	      delivery: false,
 	      type: [],
 	      resource: '',
 	      desc: ''
+	      // dialogImageUrl: '',
+	      // dialogVisible: false,
 	    }
 	  };
 	},
@@ -91,13 +102,57 @@ export default {
 	    console.log(file, fileList);
 	  },
 	  handlePictureCardPreview(file) {
+	  	console.log(file);
 	    this.dialogImageUrl = file.url;
 	    this.dialogVisible = true;
 	  },
 
 	  //提交表单的方法
 	  onSubmit() {
-	    console.log('submit!');
+			// console.log('send!!!!');
+			// console.log('productName', this.form.name);
+			// console.log('region1', this.form.region1);
+			// console.log('region2', this.form.region2);
+			// console.log('desc', this.form.desc);
+			// console.log('dialogImageUrl', this.dialogImageUrl);
+			// console.log('dialogVisible', this.dialogVisible);
+			// 
+			var formData = new FormData();
+			formData.append('productName', this.form.name);
+			formData.append('productType', this.form.region1);
+			formData.append('newDegree', this.form.region2);
+			formData.append('productDescription', this.form.desc);
+			// formData.append('productImg', this.$refs.inputfile);
+			formData.append('productImg', this.$refs.inputfile.files[0]);
+			console.log(this.$refs.inputfile.value);
+			axios({
+				url:'/upload',
+				method:'post',
+				data: formData,
+				cache: false,
+				contentType: false,
+				processData:false
+				// {
+					
+				// 	// productName: this.form.name,
+				// 	// productType: this.form.region1,
+				// 	// newDegree: this.form.region2,
+				// 	// productDescription: this.form.desc,
+				// 	// productImg: this.$refs.inputfile.value			
+				// }
+
+			}).then(res=>{
+
+				// if(res.data.ok===3){
+				// 	// this.$store.state.uploadShow = true;
+				// 	// console.log('显示',this.$store.state.uploadShow);
+				// }
+				// this.$router.push('/mine');
+				// console.log(res.data);
+				console.log('从数据库返回');
+			}
+			);
+		
 	  }
 	} 
 }

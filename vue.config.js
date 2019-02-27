@@ -23,6 +23,11 @@ module.exports = {
 	           changeOrigin: true
 
 	       },
+	       '/upload':{
+	       	   target: 'http://localhost:3000',
+	           host: 'localhost',
+	           changeOrigin: true
+	       },
 	       '/login': {
 	           target: 'http://localhost:3000',
 	           host: 'localhost',
