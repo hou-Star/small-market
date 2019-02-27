@@ -1,13 +1,16 @@
 <template>
   <div class="mine">
 		<div class="head">
-			<router-link to="/register" tag="div" class="user-box">
-				<a-avatar icon="user" size='100px'/>
-				
+			<router-link to="/login" tag="div" class="user-box">
+				<!-- <a-avatar icon="user" size='100px'/> -->
+				<div class="login">登录</div>				
 			</router-link>
 			<!-- <div class="user-box" @click="handleClick">
 			</div> -->
-			<span>注册成为卖家</span>
+			<router-link to="/register" tag="span">
+				注册成为卖家
+			</router-link>	
+			<!-- <span>注册成为卖家</span> -->
 		</div>
 		<div class="heart">
 			通告栏
@@ -19,10 +22,10 @@
 			<router-link to="/info" tag="li">投诉
 				<a-icon type="right" class="myicon"/>
 			</router-link>
-			<router-link to="/update" tag="li">上传商品
+			<router-link to="/update" tag="li" v-show="$store.state.uploadShow">上传商品
 				<a-icon type="right" class="myicon"/>
 			</router-link>
-			<router-link to="/update" tag="li">关于我们
+			<router-link to="/about" tag="li">关于我们
 				<a-icon type="right" class="myicon"/>
 			</router-link>			
 			<!-- <li><a-icon type="right" class="myicon"/>我的消息</li> -->
@@ -55,6 +58,7 @@ export default {
 		}
 	}
 }
+
 </script>
 
 <style scoped lang="scss">
@@ -76,6 +80,15 @@ ul{
 	// 	width:100px;
 	// 	height:100px;
 	// }
+}
+.user-box{
+	width:100px;
+	height:100px;
+}
+.login{
+	width:100px;
+	height:100px;
+	background-color:gray;
 }
 .heart{
 	margin:10px 0;

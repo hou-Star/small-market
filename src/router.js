@@ -4,8 +4,10 @@ import Home from './views/Home.vue' //单文件组件
 import Classify from './views/Classify.vue'
 import Mine from './views/Mine.vue'
 import Register from './views/Register.vue'
+import Login from './views/Login.vue'
 import Info from './views/Info.vue' 
 import Update from './views/Update.vue'
+import About from './views/About.vue'
 
 Vue.use(Router)
 
@@ -34,6 +36,11 @@ export default new Router({
       component: Register
     },
     {
+      path: '/login',
+      name: 'login',
+      component: Login
+    },
+    {
       path: '/info',
       name: 'info',
       component: Info
@@ -42,7 +49,12 @@ export default new Router({
       path: '/update',
       name: 'update',
       component: Update
-    },       
+    },  
+    {
+      path: '/about',
+      name: 'about',
+      component: About
+    },     
     {
       path: '/',
       redirect: '/home'

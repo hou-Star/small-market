@@ -16,7 +16,21 @@ module.exports = {
 	           	'origin-referer': 'https://m.vip.com/nbnvzhuang.html?f=www&tra_from=tra%3Auopxvvef%3A%3A%3A%3A',
 	           	'referer': 'https://m.vip.com/classify-list-130519-0-0-0-0-1-20.html'
 	           }
+	       },
+	       '/register': {
+	           target: 'http://localhost:3000',
+	           host: 'localhost',
+	           changeOrigin: true
+
+	       },
+	       '/login': {
+	           target: 'http://localhost:3000',
+	           host: 'localhost',
+	           changeOrigin: true
+
 	       }
+
+
 	 }
   }
 }

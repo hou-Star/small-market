@@ -1,5 +1,24 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+  	<Headbar></Headbar>
+	关于我们
   </div>
 </template>
+
+<script>
+// @ is an alias to /src
+import Vue from 'vue';
+import Headbar from '@/components/Headbar';
+
+Vue.component('Headbar', Headbar);
+
+
+export default {
+ 
+}
+</script>
+
+<style scoped lang="scss">
+	
+</style>
+
