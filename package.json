@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "ant-design-vue": "^1.3.5",
+    "antd-mobile": "^2.2.9",
     "axios": "^0.18.0",
     "element-ui": "^2.5.4",
     "mint-ui": "^2.2.13",

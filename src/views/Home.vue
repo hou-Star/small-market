@@ -6,11 +6,10 @@
   		<swipe-item v-for="data in looplist" >
         <img :src="data.imgUrl"/>  
       </swipe-item>
-
   	</swipe>
   	home
     <div>
-      <mt-header title="花花钱" class="top">
+      <mt-header title="跳蚤市场" class="top">
         <router-link to="/clothing/[object%20Object]" slot="left">
          <mt-button icon="back"></mt-button>
         </router-link>
@@ -31,21 +30,19 @@
             筛选
           </router-link>
       </ul>
-
-      <ul class="product-list" v-infinite-scroll="loadMore" infinite-scroll-disabled="loading" infinite-scroll-distance="10" infinite-scroll-immediate-check = "false">
-          <li v-for="data in products" @click="handleClick(data.productId)">
-            <img :src="data.squareImage.length===0?data.small_image:data.squareImage" alt="">
+      <ul class="product-list">
+          <li v-for="data in products">
+            <img :src='"http://localhost:3000/" + data.productImg'/>
             <div class="describe-1">
-              <span>疯抢价</span>
-              <span>￥{{data.promotionPrice.length===0?data.vipshop_price:data.promotionPrice}}</span>
-              <!-- <span>￥{{(data.vipshop_price*parseInt(data.vip_discount)*0.1).toFixed(0)}}</span> -->
-              <span class="hui"><del>￥{{data.promotionPrice.length===0?data.marketPrice:data.promotionMarketPrice}}</del></span>
-              <span class="hui">{{data.promotionPrice.length===0?data.vip_discount:data.promotionDiscount}}</span>
+              <span>{{data.productType}}</span>
+              <span>￥22</span>
+              <span class="hui">{{data.newDegree}}成新</span>
             </div>
             <div class="describe-2">
-              <span>{{data.brandShowName}} |</span>
+              <span>446 |</span>
               <span>
                 {{data.productName}}
+             
               </span>
             </div>
           </li>
@@ -60,14 +57,16 @@ import 'vue-swipe/dist/vue-swipe.css';
 import { Swipe, SwipeItem } from 'vue-swipe';
 import axios from 'axios'
 
+
+
 export default {
   data() {
     return {
-      looplist: [],
+      looplist: [],    //轮播图
+      products: [],    //盛放返回的大数组
 
       loading:false,
       isActive:{a:false, b:false},
-      products: [],    //盛放返回的大数组
       productIds: [],  //盛放返回的，排序后的产品id
       normalCount:0,
       sortRule:0,      //排序规则
@@ -75,7 +74,6 @@ export default {
     }
   },
 	mounted() {
-    this.getProduct();
 		axios({
 			url:"https://m.maizuo.com/gateway?type=2&cityId=440300&k=6554172",
 			headers:{
@@ -87,6 +85,15 @@ export default {
 			console.log(res.data);
       this.looplist = res.data.data;
 		});
+
+    axios({
+      url:"/getProducts",
+    }).then(res=>{
+      console.log('请求得到所有商品');
+      console.log(res.data);
+      // this.looplist = res.data.data;
+      this.products = res.data;      
+    });
 	},
 	components:{
 		"swipe":Swipe,

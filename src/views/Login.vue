@@ -42,7 +42,7 @@ export default {
 				}
 
 			}).then(res=>{
-
+				console.log('登录返回');
 				if(res.data.ok===1){
 					this.$store.state.uploadShow = true;
 					console.log('显示',this.$store.state.uploadShow);
