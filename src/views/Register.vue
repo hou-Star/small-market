@@ -8,10 +8,8 @@
 	<mt-field label="寝室号" placeholder="请输入寝室号" type="url" v-model="website"></mt-field>
 	<mt-field label="个性签名" placeholder="个性签名" type="textarea" rows="4" v-model="introduction"></mt-field>
 	<mt-button type="primary" size="large" @click="handleClick">提交</mt-button>
-<div>
-		<input type="text" placeholder="用户名" ref="username">
-		<input type="password" placeholder="密码" ref="password"><br>
-		<button @click="handleClick">提交</button>
+	<div>
+		<input type="file" name="we" ref="inputfile"/>
 	</div>
   </div>
 </template>
@@ -51,24 +49,28 @@ export default {
 		handleClick(){
 			// console.log('send!!!!');
 			console.log('introduction', this.introduction);
+			var formData = new FormData();
+			formData.append('username', this.username);
+			formData.append('password', this.password);
+			formData.append('phone', this.phone);
+			formData.append('website', this.website);
+			formData.append('introduction', this.introduction);
+			// formData.append('productImg', this.$refs.inputfile);
+			formData.append('headImg', this.$refs.inputfile.files[0]);
 			axios({
 				url:'/register',
 				method:'post',
-				data:{
-					// aa:123
-					username: this.username,
-					password: this.password,
-					phone: this.phone,
-					website: this.website,
-					introduction: this.introduction				
-				}
-
+				data:formData,
+				cache: false,
+				contentType: false,
+				processData:false			
 			}).then(res=>{
 
-				// if(res.data.ok===3){
-				// 	// this.$store.state.uploadShow = true;
-				// 	// console.log('显示',this.$store.state.uploadShow);
-				// }
+				if(res.data.ok===3){
+					this.$router.push('/mine');
+					// this.$store.state.uploadShow = true;
+					// console.log('显示',this.$store.state.uploadShow);
+				}
 				// this.$router.push('/mine');
 				// console.log(res.data);
 				console.log('从数据库返回');

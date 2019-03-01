@@ -16,6 +16,9 @@
 		        <el-option label="2" value="2"></el-option>
 		      </el-select>
 		    </el-form-item>
+		    <el-form-item label="商品价格">
+		      <el-input v-model="form.price"></el-input>
+		    </el-form-item>
 		  <el-form-item label="商品描述">
 		     <el-input type="textarea" v-model="form.desc"></el-input>
 		   </el-form-item>
@@ -90,7 +93,8 @@ export default {
 	      delivery: false,
 	      type: [],
 	      resource: '',
-	      desc: ''
+	      desc: '',
+	      price:''
 	      // dialogImageUrl: '',
 	      // dialogVisible: false,
 	    }
@@ -122,6 +126,7 @@ export default {
 			formData.append('productType', this.form.region1);
 			formData.append('newDegree', this.form.region2);
 			formData.append('productDescription', this.form.desc);
+			formData.append('productPrice', this.form.price);
 			// formData.append('productImg', this.$refs.inputfile);
 			formData.append('productImg', this.$refs.inputfile.files[0]);
 			console.log(this.$refs.inputfile.value);

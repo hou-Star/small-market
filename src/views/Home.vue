@@ -35,7 +35,7 @@
             <img :src='"http://localhost:3000/" + data.productImg'/>
             <div class="describe-1">
               <span>{{data.productType}}</span>
-              <span>￥22</span>
+              <span>￥{{data.productPrice}}</span>
               <span class="hui">{{data.newDegree}}成新</span>
             </div>
             <div class="describe-2">

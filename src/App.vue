@@ -20,4 +20,7 @@
 </script>
 
 <style scoped lang="scss">
+// #box{
+//   padding-bottom:80px;
+// }
 </style>

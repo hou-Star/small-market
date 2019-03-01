@@ -3,14 +3,15 @@
 		<div class="head">
 			<router-link to="/login" tag="div" class="user-box">
 				<!-- <a-avatar icon="user" size='100px'/> -->
-				<div class="login">登录</div>				
+				<div class="login">
+					<img :src='"http://localhost:3000/" + headImg' class="headImg" v-show="uploadShow"/>
+					登录
+					<span>{{username}}</span>
+				</div>				
 			</router-link>
-			<!-- <div class="user-box" @click="handleClick">
-			</div> -->
-			<router-link to="/register" tag="span">
+			<router-link to="/register" tag="span" class="toRegister" v-show="!uploadShow">
 				注册成为卖家
-			</router-link>	
-			<!-- <span>注册成为卖家</span> -->
+			</router-link>
 		</div>
 		<div class="heart">
 			通告栏
@@ -53,7 +54,7 @@
 				<router-link to="/info" tag="li">投诉
 					<a-icon type="right" class="myicon"/>
 				</router-link>
-				<router-link to="/update" tag="li" v-show="$store.state.uploadShow">上传商品
+				<router-link to="/update" tag="li" v-show="uploadShow">上传商品
 					<a-icon type="right" class="myicon"/>
 				</router-link>
 				<router-link to="/about" tag="li">关于我们
@@ -87,6 +88,13 @@ Vue.config.productionTip = false;
 
 Vue.config.productionTip = false;
 export default {
+	data(){
+		return{
+			username:"",
+			headImg:"",
+			uploadShow:null		
+		}
+	},
 	methods:{
 		handleClick(){
 			console.log('aaa');
@@ -107,7 +115,14 @@ export default {
 		    nextEl: '.swiper-button-next',
 		    prevEl: '.swiper-button-prev',
 		  }
-		});		
+		});
+		console.log(sessionStorage.getItem('person'));
+		if(sessionStorage.getItem('person')!==null){
+		this.username = JSON.parse(sessionStorage.getItem('person')).username;
+		this.headImg = JSON.parse(sessionStorage.getItem('person')).headImg;
+		this.uploadShow = JSON.parse(sessionStorage.getItem('person'));
+		}
+		console.log(this.headImg);
 	}
 }
 
@@ -122,7 +137,7 @@ export default {
 	padding:0;
 }
 .mine{
-
+margin-bottom:80px; 
 }
 ul{
 	list-style: none;
@@ -135,15 +150,23 @@ ul{
 	// 	width:100px;
 	// 	height:100px;
 	// }
-}
-.user-box{
-	width:100px;
-	height:100px;
-}
-.login{
-	width:100px;
-	height:100px;
-	background-color:gray;
+	.user-box{
+		width:100px;
+		height:100px;
+		.login{
+			width:100px;
+			height:100px;
+			background-color:gray;
+			position:relative;
+			.headImg{
+				position:absolute;
+				left:0;
+				top:0;
+				width:100%;
+				height:100%;
+			}
+		}
+	}
 }
 .heart{
 	margin:10px 0;

@@ -1,11 +1,11 @@
 <template>
   <div class="tabbar" v-show="$store.state.tabbarShow">
-	<ul>
-	  <router-link tag='li' to="/home" activeClass="myactive">home</router-link>
-	  <!-- activeClass是属性 -->
-	  <router-link tag='li' to="/classify" activeClass="myactive">classify</router-link>
-	  <router-link tag='li' to="/mine" activeClass="myactive">mine</router-link> 
-	</ul>
+  	<ul>
+  	  <router-link tag='li' to="/home" activeClass="myactive">home</router-link>
+  	  <!-- activeClass是属性 -->
+  	  <router-link tag='li' to="/classify" activeClass="myactive">classify</router-link>
+  	  <router-link tag='li' to="/mine" activeClass="myactive">mine</router-link> 
+  	</ul>
   </div>
 </template>
 
@@ -23,6 +23,9 @@ export default {
   margin:0px;
   padding:0px;
 }
+// .tabbar{
+//   margin-bottom:80px; 
+// }
 #box{
   background-color:#eee;
 }
