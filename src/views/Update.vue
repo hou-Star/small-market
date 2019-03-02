@@ -137,14 +137,6 @@ export default {
 				cache: false,
 				contentType: false,
 				processData:false
-				// {
-					
-				// 	// productName: this.form.name,
-				// 	// productType: this.form.region1,
-				// 	// newDegree: this.form.region2,
-				// 	// productDescription: this.form.desc,
-				// 	// productImg: this.$refs.inputfile.value			
-				// }
 
 			}).then(res=>{
 
