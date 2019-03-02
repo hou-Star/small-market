@@ -43,9 +43,11 @@ export default {
 
 			}).then(res=>{
 				console.log('登录返回');
-				console.log('session===', res.data.person);
-				document.cookie = "person="+res.data.person.username;
+				console.log('res=====', res);
+				console.log('session===', res.session);
+				// document.cookie = "person="+res.data.person.username;
 				sessionStorage.setItem('person',JSON.stringify(res.data.person));
+				// sessionStorage.setItem('person',JSON.stringify(res.session.whatever));
 				if(res.data.ok===1){
 					this.$store.state.uploadShow = true;
 					console.log('显示',this.$store.state.uploadShow);

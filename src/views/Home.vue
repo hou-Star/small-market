@@ -32,7 +32,7 @@
       </ul>
       <ul class="product-list">
           <li v-for="data in products">
-            <img :src='"http://localhost:3000/" + data.productImg'/>
+            <img :src='"http://172.18.12.196:3000/" + data.productImg'/>
             <div class="describe-1">
               <span>{{data.productType}}</span>
               <span>￥{{data.productPrice}}</span>

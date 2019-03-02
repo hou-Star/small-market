@@ -4,7 +4,7 @@
 			<router-link to="/login" tag="div" class="user-box">
 				<!-- <a-avatar icon="user" size='100px'/> -->
 				<div class="login">
-					<img :src='"http://localhost:3000/" + headImg' class="headImg" v-show="uploadShow"/>
+					<img :src='"http://172.18.12.196:3000/" + headImg' class="headImg" v-show="uploadShow"/>
 					登录
 					<span>{{username}}</span>
 				</div>				
@@ -116,7 +116,7 @@ export default {
 		    prevEl: '.swiper-button-prev',
 		  }
 		});
-		console.log(sessionStorage.getItem('person'));
+		// console.log(sessionStorage.getItem('person'));
 		if(sessionStorage.getItem('person')!==null){
 		this.username = JSON.parse(sessionStorage.getItem('person')).username;
 		this.headImg = JSON.parse(sessionStorage.getItem('person')).headImg;

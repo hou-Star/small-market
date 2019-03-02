@@ -130,6 +130,7 @@ export default {
 			// formData.append('productImg', this.$refs.inputfile);
 			formData.append('productImg', this.$refs.inputfile.files[0]);
 			console.log(this.$refs.inputfile.value);
+			console.log('cookie', document.cookie);
 			axios({
 				url:'/upload',
 				method:'post',
