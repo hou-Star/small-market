@@ -18,25 +18,25 @@ module.exports = {
 	           }
 	       },
 	       '/register': {
-	           target: 'http://172.18.12.196:3000',
-	           host: '172.18.12.196',
+	           target: 'http://localhost:3000',
+	           host: 'localhost',
 	           changeOrigin: true
 
 	       },
 	       '/upload':{
-	       	   target: 'http://172.18.12.196:3000',
-	           host: '172.18.12.196',
+	       	   target: 'http://localhost:3000',
+	           host: 'localhost',
 	           changeOrigin: true
 	       },
 	       '/login': {
-	           target: 'http://172.18.12.196:3000',
-	           host: '172.18.12.196',
+	           target: 'http://localhost:3000',
+	           host: 'localhost',
 	           changeOrigin: true
 
 	       },
 	       '/getProducts': {
-	           target: 'http://172.18.12.196:3000',
-	           host: '172.18.12.196',
+	           target: 'http://localhost:3000',
+	           host: 'localhost',
 	           changeOrigin: true
 
 	       }
