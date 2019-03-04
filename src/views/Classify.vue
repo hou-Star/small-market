@@ -2,25 +2,25 @@
   <div class="classify">
 		<Headbar></Headbar>        
 	  <ul  class="list">
-	    <li arrow="horizontal" multipleLine onClick={this.handleClick.bind(this,20)}>
+	    <li arrow="horizontal" @click="handleClick">
 	       <a ref={this.id}>服装</a>
 	    </li>
-	    <li arrow="horizontal" multipleLine onClick={this.handleClick.bind(this,21)}>
-	      <a ref={this.id}>电器</a>
-	    </li>
-	    <li arrow="horizontal" multipleLine onClick={this.handleClick.bind(this,22)}>
-	      <a ref="mycontent">食品</a>
-	    </li>
-	    <li arrow="horizontal" multipleLine onClick={this.handleClick.bind(this,2310)}>
-	      <a ref="mycontent">美妆</a>
-	    </li>
-	    <li arrow="horizontal" multipleLine onClick={this.handleClick.bind(this,24)}>
+	    <li arrow="horizontal" @click="handleClick">
 	      <a ref="mycontent">学习用品</a>
 	    </li>
-	    <li arrow="horizontal" multipleLine onClick={this.handleClick.bind(this,2210)}>
+	    <li arrow="horizontal" @click="handleClick">
 	      <a ref="mycontent">日用品</a>
 	    </li>
-	    <li arrow="horizontal" multipleLine onClick={this.handleClick.bind(this,2210)}>
+	    <li arrow="horizontal" @click="handleClick">
+	      <a ref="mycontent">美妆</a>
+	    </li>
+	    <li arrow="horizontal" @click="handleClick">
+	      <a ref={this.id}>电器</a>
+	    </li>
+	    <li arrow="horizontal" @click="handleClick">
+	      <a ref="mycontent">食品</a>
+	    </li>
+	    <li arrow="horizontal" @click="handleClick">
 	      <a ref="mycontent">其它</a>
 	    </li>
 	  </ul>
@@ -34,7 +34,13 @@ import Vue from 'vue'
 
 // Vue.component(li,List.li);
 export default {
- 
+	methods:{
+		handleClick(){
+
+            this.$router.push(`/list`)
+        
+		}
+	}
 }
 </script>
 

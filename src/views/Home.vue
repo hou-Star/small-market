@@ -8,56 +8,19 @@
       </swipe-item>
   	</swipe>
   	home
-    <div>
-      <mt-header title="跳蚤市场" class="top">
-        <router-link to="/clothing/[object%20Object]" slot="left">
-         <mt-button icon="back"></mt-button>
-        </router-link>
-        <mt-button icon="more" slot="right"></mt-button>
-      </mt-header>
-
-      <ul class="topbar">
-          <router-link to="" tag="li" class="topbar-cell" @click.native="sortByPrice()" :style="isActive.a?'color:red':'color:black'">
-            价格
-          </router-link>    
-          <router-link to="javascript:;" tag="li" class="topbar-cell" @click.native="sortByDiscount()" :style="isActive.b?'color:red':'color:black'">
-            折扣
-          </router-link>
-          <router-link to="javascript:;" tag="li" class="topbar-cell" @click.native="" :style="isActive?'color:black':'color:red'">
-            品牌
-          </router-link>
-          <router-link to="javascript:;" tag="li" class="topbar-cell" @click.native="" :style="isActive?'color:black':'color:red'">
-            筛选
-          </router-link>
-      </ul>
-      <ul class="product-list">
-          <li v-for="data in products">
-            <img :src='"http://localhost:3000/" + data.productImg'/>
-            <div class="describe-1">
-              <span>{{data.productType}}</span>
-              <span>￥{{data.productPrice}}</span>
-              <span class="hui">{{data.newDegree}}成新</span>
-            </div>
-            <div class="describe-2">
-              <span>{{data.userid.website}} |</span>
-              <span>
-                {{data.productName}}
-             
-              </span>
-            </div>
-          </li>
-      </ul>
-    </div>
+    <List></List>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
+import Vue from 'vue';
 import 'vue-swipe/dist/vue-swipe.css';
 import { Swipe, SwipeItem } from 'vue-swipe';
 import axios from 'axios'
+import List from '@/components/List'
 
-
+Vue.component('List', List);
 
 export default {
   data() {
@@ -156,7 +119,7 @@ export default {
             this.isActive.b = true;
             this.isActive.a = false;
           }
-  },
+  }
 }
 </script>
 
@@ -194,71 +157,6 @@ ul{
 router-link{
   text-decoration:none !important;
 }
-.top{
-  width:100%;
-
-  background-color: red;
-  font-size:120px;
-}
-.mint-header.top{
-  background-color:white;
-  height:49px;
-  color:black;
-  font-size:16px;
-  border-bottom:1px #e5e5e5 solid;
-}
-.topbar{
-  width:100%;
-  height:39px;
-  display:flex;
-  border-bottom:1px solid #e5e5e5;
-}
-.topbar li{
-  flex:1;
-  text-align:center;
-  line-height:39px;
-}
-.topbar li:nth-of-type(3){
-  border-right:1px solid #e5e5e5;
-}
-.topbar-cell{
-  text-decoration:none;
-  color:black;
-}
-.product-list{
-  display:flex;
-  flex-wrap:wrap;
-}
-.product-list li{
-  width:47%;
-  background-color:-pink;
-  margin:5px auto;
-}
-.product-list li img{
-  display:block;
-  width:100%;
-}
-.product-list .describe-1{
-  width:100%;
-  margin:5px 2px 0;
-}
-.product-list .describe-2{
-  width:100%;
-  font-size: 14px;
-  color:#585c64;
-  margin:3px 2px 5px;
-
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
-}
-.product-list .hui{
-  font-size:12px;
-  color:#98989f;
-  margin:0 2px;
-}
-
 .active{
   border-bottom:5px solid #f60;
 }

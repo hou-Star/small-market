@@ -39,6 +39,12 @@ module.exports = {
 	           host: 'localhost',
 	           changeOrigin: true
 
+	       },
+	       '/getProduct': {
+	           target: 'http://localhost:3000',
+	           host: 'localhost',
+	           changeOrigin: true
+
 	       }
 
 

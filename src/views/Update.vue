@@ -6,14 +6,27 @@
   	  </el-form-item>
 		<el-form-item label="商品类别">
 		    <el-select v-model="form.region1" placeholder="请选择商品类别">
-		      <el-option label="衣服" value="衣服"></el-option>
-		      <el-option label="书籍" value="书籍"></el-option>
+		      <el-option label="服装" value="服装"></el-option>
+		      <el-option label="学习用品" value="学习用品"></el-option>
+		      <el-option label="日用品" value="日用品"></el-option>
+		      <el-option label="美妆" value="美妆"></el-option>
+		      <el-option label="电器" value="电器"></el-option>
+		      <el-option label="食品" value="食品"></el-option>
+		      <el-option label="其它" value="其它"></el-option>
 		    </el-select>
 		  </el-form-item>
 		  <el-form-item label="几成新">
 		      <el-select v-model="form.region2" placeholder="请选择商品类别">
 		        <el-option label="1" value="1"></el-option>
 		        <el-option label="2" value="2"></el-option>
+		        <el-option label="3" value="3"></el-option>
+		        <el-option label="4" value="4"></el-option>
+		        <el-option label="5" value="5"></el-option>
+		        <el-option label="6" value="6"></el-option>
+		        <el-option label="7" value="7"></el-option>
+		        <el-option label="8" value="8"></el-option>
+		        <el-option label="9" value="9"></el-option>
+		        <el-option label="10" value="10"></el-option>
 		      </el-select>
 		    </el-form-item>
 		    <el-form-item label="商品价格">
@@ -141,12 +154,12 @@ export default {
 
 			}).then(res=>{
 
-				// if(res.data.ok===3){
+			// if(res.data.ok===3){
 				// 	// this.$store.state.uploadShow = true;
 				// 	// console.log('显示',this.$store.state.uploadShow);
 				// }
 				// this.$router.push('/mine');
-				// console.log(res.data);
+				// console.log(res.data);	
 				console.log('从数据库返回');
 			}
 			);

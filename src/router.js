@@ -8,6 +8,8 @@ import Login from './views/Login.vue'
 import Info from './views/Info.vue' 
 import Update from './views/Update.vue'
 import About from './views/About.vue'
+import List from './components/List.vue'
+import Detail from './views/Detail.vue'
 
 Vue.use(Router)
 
@@ -54,7 +56,17 @@ export default new Router({
       path: '/about',
       name: 'about',
       component: About
-    },     
+    },   
+    {
+      path: '/list',
+      name: 'list',
+      component: List
+    },
+    {
+      path: '/detail/:id',
+      name: 'detail',
+      component: Detail
+    },    
     {
       path: '/',
       redirect: '/home'
