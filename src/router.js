@@ -58,7 +58,7 @@ export default new Router({
       component: About
     },   
     {
-      path: '/list',
+      path: '/list/:type',
       name: 'list',
       component: List
     },

@@ -14,7 +14,6 @@
 			</router-link>
 		</div>
 		<div class="heart">
-			通告栏
 			<div class="swiper-container">
 			  <div class="parallax-bg" style="background-image:url(https://www.swiper.com.cn/demo/img/Parallax.jpg)" data-swiper-parallax="-23%"></div>
 			  <div class="swiper-wrapper">
@@ -22,21 +21,21 @@
 			      <div class="title" data-swiper-parallax="-300">Slide 1</div>
 			      <div class="subtitle" data-swiper-parallax="-200">Subtitle</div>
 			      <div class="text" data-swiper-parallax="-100">
-			        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam dictum mattis velit, sit amet faucibus felis iaculis nec. Nulla laoreet justo vitae porttitor porttitor. Suspendisse in sem justo. Integer laoreet magna nec elit suscipit, ac laoreet nibh euismod. Aliquam hendrerit lorem at elit facilisis rutrum. Ut at ullamcorper velit. Nulla ligula nisi, imperdiet ut lacinia nec, tincidunt ut libero. Aenean feugiat non eros quis feugiat.</p>
+			        <p>通知一</p>
 			      </div>
 			    </div>
 			    <div class="swiper-slide">
 			      <div class="title" data-swiper-parallax="-300" data-swiper-parallax-opacity="0">Slide 2</div>
 			      <div class="subtitle" data-swiper-parallax="-200">Subtitle</div>
 			      <div class="text" data-swiper-parallax="-100">
-			        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam dictum mattis velit, sit amet faucibus felis iaculis nec. Nulla laoreet justo vitae porttitor porttitor. Suspendisse in sem justo. Integer laoreet magna nec elit suscipit, ac laoreet nibh euismod. Aliquam hendrerit lorem at elit facilisis rutrum. Ut at ullamcorper velit. Nulla ligula nisi, imperdiet ut lacinia nec, tincidunt ut libero. Aenean feugiat non eros quis feugiat.</p>
+			        <p>通知二</p>
 			      </div>
 			    </div>
 			    <div class="swiper-slide">
 			      <div class="title" data-swiper-parallax="-300">Slide 3</div>
 			      <div class="subtitle" data-swiper-parallax="-200">Subtitle</div>
 			      <div class="text" data-swiper-parallax="-100">
-			        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam dictum mattis velit, sit amet faucibus felis iaculis nec. Nulla laoreet justo vitae porttitor porttitor. Suspendisse in sem justo. Integer laoreet magna nec elit suscipit, ac laoreet nibh euismod. Aliquam hendrerit lorem at elit facilisis rutrum. Ut at ullamcorper velit. Nulla ligula nisi, imperdiet ut lacinia nec, tincidunt ut libero. Aenean feugiat non eros quis feugiat.</p>
+			        <p>通知三</p>
 			      </div>
 			    </div>
 			  </div>
@@ -136,28 +135,29 @@ export default {
 	margin:0;
 	padding:0;
 }
-.mine{
-margin-bottom:80px; 
-}
 ul{
 	list-style: none;
 }
 .head{
 	width:100%;
-	height:200px;
+	height:150px;
 	background-color: orange;
-	// .user-box{
-	// 	width:100px;
-	// 	height:100px;
-	// }
+	overflow: hidden;
+	
 	.user-box{
+		float:left;
 		width:100px;
 		height:100px;
+		border-radius:50% !important;
+		overflow:hidden;
+		margin:20px;
 		.login{
 			width:100px;
 			height:100px;
 			background-color:gray;
 			position:relative;
+			text-align: center;
+			line-height:100px;
 			.headImg{
 				position:absolute;
 				left:0;
@@ -167,19 +167,22 @@ ul{
 			}
 		}
 	}
+	.toRegister{
+		float:right;
+		margin:60px 60px 0 20px;
+	}
 }
 .heart{
-	margin:10px 0;
+	// margin:10px 0;
 	width:100%;
-	height:100px;
+	// height:100px;
 	// display: flex;
-	background-color:pink;
-	// li{
-	// 	flex:1;
-	// 	line-height: 100px;
-	// 	text-align: center;
-
-	// }
+	background-color:-pink;
+	
+	.swiper-container{
+		width:100%;
+		height:200px;
+	}
 }
 .fun-list{
 	width:100%;
@@ -197,6 +200,7 @@ ul{
 			padding-right: 12px;
 		}
 	}
+	margin-bottom:80px;
 }
 .ant-avatar{
 	width:100px;

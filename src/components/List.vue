@@ -19,7 +19,7 @@
   	    <li v-for="data in products" @click="handleClick(data._id)">
   	      <img :src='"http://localhost:3000/" + data.productImg'/>
   	      <div class="describe-1">
-  	        <span>{{data.productType}}</span>
+  	        <span>{{productType[parseInt(data.productType)-1]}}</span>
   	        <span>￥{{data.productPrice}}</span>
   	        <span class="hui">{{data.newDegree}}成新</span>
   	      </div>
@@ -46,6 +46,7 @@ export default {
 	data() {
 	    return {
 	      products: [],    //盛放返回的大数组
+        productType: ['服装','学习用品','日用品','美妆','电器','食品','其它'],
 
 	      loading:false,
 	      isActive:{a:false, b:false},
@@ -56,8 +57,9 @@ export default {
 	    }
 	},
 	mounted() {
+    console.log('路由参数', this.$route.params.type);
 		axios({
-	      url:"/getProducts",
+	      url:`/getProducts?type=${this.$route.params.type||'0'}`,
 	    }).then(res=>{
 	      console.log('请求得到所有商品');
 	      console.log(res.data);

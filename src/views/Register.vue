@@ -1,16 +1,45 @@
 <template>
   <div class="register">
-	注册页
 	<Headbar></Headbar>
-	<mt-field label="用户名" placeholder="请输入用户名" v-model="username"></mt-field>
+	<mt-field label="用户名" placeholder="请输入用户名" v-model="username" @input="registerCheck">
+	</mt-field>
+	<span class="error" v-show="registered">
+		该用户名已被占用
+	</span>
 	<mt-field label="密码" placeholder="请输入密码" type="password" v-model="password"></mt-field>
 	<mt-field label="联系方式" placeholder="联系方式" type="tel" v-model="phone"></mt-field>
 	<mt-field label="寝室号" placeholder="请输入寝室号" type="url" v-model="website"></mt-field>
 	<mt-field label="个性签名" placeholder="个性签名" type="textarea" rows="4" v-model="introduction"></mt-field>
+	<el-upload
+	  class="avatar-uploader"
+	  action="https://localhost:3000/public/headImgs"
+	  :auto-upload=false
+	  :show-file-list="false"
+	  :on-success="handleAvatarSuccess"
+	  :before-upload="beforeAvatarUpload"
+	  :on-remove="handleRemove"
+	  ref="inputfile"   
+	  >
+	  <img v-if="imageUrl" :src="imageUrl" class="avatar">
+	  <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+	</el-upload>
+<!-- 	<el-upload
+	  action="https://jsonplaceholder.typicode.com/posts/"
+
+	  list-type="picture-card"
+	  :on-preview="handlePictureCardPreview"
+	  :on-remove="handleRemove"
+	  :limit=1>
+	  <i class="el-icon-plus"></i>
+	</el-upload>
+	<el-dialog :visible.sync="dialogVisible">
+	  <img width="100%" :src="dialogImageUrl" alt="">
+	</el-dialog> -->
+
 	<mt-button type="primary" size="large" @click="handleClick">提交</mt-button>
-	<div>
-		<input type="file" name="we" ref="inputfile"/>
-	</div>
+<!-- 	<div>
+	<input type="file" name="we" ref="inputfile"/>
+</div> -->
   </div>
 </template>
 
@@ -24,6 +53,10 @@ import { Field } from 'mint-ui';
 import { Button } from 'mint-ui';
 import Headbar from '@/components/Headbar';
 
+import { Upload } from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+Vue.component(Upload.name, Upload);
+
 Vue.component(Button.name, Button);
 Vue.component(Field.name, Field);
 Vue.component(Header.name, Header);
@@ -36,7 +69,12 @@ export default {
 			password: "",
 			phone:"",
 			website:"",
-			introduction:""
+			introduction:"",
+
+			registered:0,
+			dialogImageUrl: '',
+			dialogVisible: false,
+			imageUrl:''
 		}
 	},
 	mounted(){
@@ -47,8 +85,11 @@ export default {
 	},
 	methods:{
 		handleClick(){
+			var input = document.querySelector('.el-upload__input');
+			console.log('input',input);
 			// console.log('send!!!!');
-			console.log('introduction', this.introduction);
+			console.log('headImg', input.value);
+			// console.log('headImgjlklklkl', this.$refs.$children[0].$refs);
 			var formData = new FormData();
 			formData.append('username', this.username);
 			formData.append('password', this.password);
@@ -56,7 +97,8 @@ export default {
 			formData.append('website', this.website);
 			formData.append('introduction', this.introduction);
 			// formData.append('productImg', this.$refs.inputfile);
-			formData.append('headImg', this.$refs.inputfile.files[0]);
+			// formData.append('headImg', this.$refs.inputfile.files[0]);
+			formData.append('headImg', input.files[0]);
 			axios({
 				url:'/register',
 				method:'post',
@@ -76,16 +118,88 @@ export default {
 				console.log('从数据库返回');
 			}
 			);
-		}
-		// handleClick(){
-		// 	console.log(this.username);
-		// }
+		},
+		registerCheck(){
+			axios({
+				url:'/register/check',	
+				method:'post',
+				data:{
+					username:this.username
+				}		
+			}).then(res=>{
+				this.registered = res.data.ok;
+				// if(res.data.ok===3){
+				// 	this.$router.push('/mine');
+				// 	// this.$store.state.uploadShow = true;
+				// 	// console.log('显示',this.$store.state.uploadShow);
+				// }
+				// this.$router.push('/mine');
+				// console.log(res.data);
+				console.log('从数据库返回');
+			}
+			);
+		},
+		//上传头像
+		  handleAvatarSuccess(res, file) {
+		    this.imageUrl = URL.createObjectURL(file.raw);
+		    console.log(this.imageUrl);
+		  },
+		  beforeAvatarUpload(file) {
+		    const isJPG = file.type === 'image/jpeg';
+		    const isLt126M = file.size / 1024 / 1024 < 126;
+
+		    if (!isJPG) {
+		      this.$message.error('上传头像图片只能是 JPG 格式!');
+		    }
+		    if (!isLt126M) {
+		      this.$message.error('上传头像图片大小不能超过 2MB!');
+		    }
+		    return isJPG && isLt126M;
+		  },
+
+
+		  handleRemove(file, fileList) {
+		    console.log(file, fileList);
+		  },
+		  handlePictureCardPreview(file) {
+		    this.dialogImageUrl = file.url;
+		    this.dialogVisible = true;
+		  }
+		
 	}
 }
 </script>
 
 <style scoped lang="scss">
-	
+.error{
+	display:block;
+	width: 100%;
+	color:red;
+	text-indent: 115px;
+}
+.avatar-uploader .el-upload {
+  border: 1px dashed #d9d9d9;
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.avatar-uploader .el-upload:hover {
+  border-color: #409EFF;
+}
+.avatar-uploader-icon {
+  font-size: 28px;
+  color: #8c939d;
+  width: 178px;
+  height: 178px;
+  line-height: 178px;
+  text-align: center;
+}
+.avatar {
+  width: 178px;
+  height: 178px;
+  display: block;
+}	
 </style>
 
 

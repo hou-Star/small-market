@@ -1,13 +1,11 @@
 <template>
   <div class="home">
-  	home--大轮播
   	<swipe class="my-swipe">
   		<!-- 注册后才能使用 -->
   		<swipe-item v-for="data in looplist" >
         <img :src="data.imgUrl"/>  
       </swipe-item>
   	</swipe>
-  	home
     <List></List>
   </div>
 </template>
@@ -27,6 +25,7 @@ export default {
     return {
       looplist: [],    //轮播图
       products: [],    //盛放返回的大数组
+     
 
       loading:false,
       isActive:{a:false, b:false},
@@ -49,14 +48,6 @@ export default {
       this.looplist = res.data.data;
 		});
 
-    axios({
-      url:"/getProducts",
-    }).then(res=>{
-      console.log('请求得到所有商品');
-      console.log(res.data);
-      // this.looplist = res.data.data;
-      this.products = res.data;      
-    });
 	},
 	components:{
 		"swipe":Swipe,

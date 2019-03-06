@@ -2,25 +2,25 @@
   <div class="classify">
 		<Headbar></Headbar>        
 	  <ul  class="list">
-	    <li arrow="horizontal" @click="handleClick">
+	    <li arrow="horizontal" @click="handleClick(1)">
 	       <a ref={this.id}>服装</a>
 	    </li>
-	    <li arrow="horizontal" @click="handleClick">
+	    <li arrow="horizontal" @click="handleClick(2)">
 	      <a ref="mycontent">学习用品</a>
 	    </li>
-	    <li arrow="horizontal" @click="handleClick">
+	    <li arrow="horizontal" @click="handleClick(3)">
 	      <a ref="mycontent">日用品</a>
 	    </li>
-	    <li arrow="horizontal" @click="handleClick">
+	    <li arrow="horizontal" @click="handleClick(4)">
 	      <a ref="mycontent">美妆</a>
 	    </li>
-	    <li arrow="horizontal" @click="handleClick">
+	    <li arrow="horizontal" @click="handleClick(5)">
 	      <a ref={this.id}>电器</a>
 	    </li>
-	    <li arrow="horizontal" @click="handleClick">
+	    <li arrow="horizontal" @click="handleClick(6)">
 	      <a ref="mycontent">食品</a>
 	    </li>
-	    <li arrow="horizontal" @click="handleClick">
+	    <li arrow="horizontal" @click="handleClick(7)">
 	      <a ref="mycontent">其它</a>
 	    </li>
 	  </ul>
@@ -35,10 +35,8 @@ import Vue from 'vue'
 // Vue.component(li,List.li);
 export default {
 	methods:{
-		handleClick(){
-
-            this.$router.push(`/list`)
-        
+		handleClick(index){
+            this.$router.push(`/list/${index}`);       
 		}
 	}
 }

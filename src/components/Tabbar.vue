@@ -38,12 +38,14 @@ ul{
   left:0;
   bottom: 0;
   color:gray;
+  background-color:#999;
 
   background-color:white;
 
   li{
     flex:1;
     text-align: center;
+    line-height:50px;
   }
 }
 .myactive{

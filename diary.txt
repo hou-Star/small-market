@@ -1,4 +1,4 @@
-
+﻿
 2019.2.12  有了初步构思
 2019.2.18  启动了毕业设计项目
 2019.2.24  在自己电脑上从Github上把项目pull了下来
@@ -16,3 +16,5 @@
 
 2019.3.3   利用session存用户的_id，让多个.js路由页面对其进行共享，实现连表查询（借助populate填充方法）
 2019.3.4   动态路由到detail页面(用this.$router.push(`/detail/${index}`)存，用${this.$route.params.id}取)，List.js组件的制作
+
+2019.3.6   用elementUI上传图片，用document.querySelector取dom结点input

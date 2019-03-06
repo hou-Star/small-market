@@ -6,13 +6,13 @@
   	  </el-form-item>
 		<el-form-item label="商品类别">
 		    <el-select v-model="form.region1" placeholder="请选择商品类别">
-		      <el-option label="服装" value="服装"></el-option>
-		      <el-option label="学习用品" value="学习用品"></el-option>
-		      <el-option label="日用品" value="日用品"></el-option>
-		      <el-option label="美妆" value="美妆"></el-option>
-		      <el-option label="电器" value="电器"></el-option>
-		      <el-option label="食品" value="食品"></el-option>
-		      <el-option label="其它" value="其它"></el-option>
+		      <el-option label="服装" value="1"></el-option>
+		      <el-option label="学习用品" value="2"></el-option>
+		      <el-option label="日用品" value="3"></el-option>
+		      <el-option label="美妆" value="4"></el-option>
+		      <el-option label="电器" value="5"></el-option>
+		      <el-option label="食品" value="6"></el-option>
+		      <el-option label="其它" value="7"></el-option>
 		    </el-select>
 		  </el-form-item>
 		  <el-form-item label="几成新">
