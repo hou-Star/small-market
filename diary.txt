@@ -18,3 +18,8 @@
 2019.3.4   动态路由到detail页面(用this.$router.push(`/detail/${index}`)存，用${this.$route.params.id}取)，List.js组件的制作
 
 2019.3.6   用elementUI上传图片，用document.querySelector取dom结点input
+2019.3.7   用elementUI上传头像，用:auto-upload="false"禁止自动上传，否则会被action截获，无法获取图片转换为二进制后的东西file:(binary)，用:onchange绑定事件，得到图片在浏览器中临时存储的地址（注意：存储到浏览器缓存也是一个异步的过程），把得到的地址赋给img标签的:src，这样就可以显示缩略图了；
+复用了LIst之后出现的问题，
+在home.vue页面用到了List组件，在list.vue也用到了List组件，
+前一个情况需要显示tabbar，后一种情况不需要显示tabbar。
+因为后一种情况是从classify.vue动态路由跳转过来的，所以会携带type=多少，在List组件的mounted生命周期中有条件地给tabbarShow赋值，出现不同的效果。
