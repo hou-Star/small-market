@@ -24,10 +24,10 @@ Vue.component(Header.name, Header);
 
 export default {
 	mounted(){
-		this.$store.state.tabbarShow = false;		
+		this.$store.commit("changeTabbarShow", false);		
 	},
 	beforeDestroy(){
-		this.$store.state.tabbarShow = true;		
+		this.$store.commit("changeTabbarShow", true);		
 	},
 	methods:{
 		handleClick(){

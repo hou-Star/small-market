@@ -1,21 +1,5 @@
 <template>
   <div class="detail">
-			
-<!-- 				<div class="head">
-					<div>
-						<a class="homeIcon" href="/index">
-							<img src="/static/home.png"/>
-						</a>
-					</div>
-					<div>
-						<span>商品详情</span>
-					</div>
-					<div>
-						<a class="searchIcon">
-							<img src="/static/search.png"/>
-						</a>
-					</div>
-				</div> -->
 	<Headbar></Headbar>
 	<div class="soloDisplay" v-if="product.productName">
 		<img :src='"http://localhost:3000/" +product.productImg' class="productImg"/>
@@ -44,6 +28,7 @@ export default {
 	  }
 	},
 	mounted(){
+		this.$store.commit("changeTabbarShow", false);
 		axios({
 		  url:`/getProduct?id=${this.$route.params.id}`
 		}).then(res=>{
@@ -52,6 +37,9 @@ export default {
 		  // this.looplist = res.data.data;
 		  this.product = res.data[0];      
 		});
+	},
+	beforeDestroy(){
+		this.$store.commit("changeTabbarShow", true);
 	}
  
 }
@@ -69,7 +57,7 @@ export default {
 		.productImg{
 			display:block;
 			width:100%;
-
+			height:400px;
 		}
 		div{
 			padding-left:18px;

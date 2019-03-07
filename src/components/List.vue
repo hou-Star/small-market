@@ -58,6 +58,10 @@ export default {
 	},
 	mounted() {
     console.log('路由参数', this.$route.params.type);
+    if(this.$route.params.type){
+      this.$store.commit("changeTabbarShow", false);
+      
+    }
 		axios({
 	      url:`/getProducts?type=${this.$route.params.type||'0'}`,
 	    }).then(res=>{
@@ -67,6 +71,9 @@ export default {
 	      this.products = res.data;      
 	    });
 	}, 
+  beforeDestroy(){
+    this.$store.commit("changeTabbarShow", true);
+  },
 	methods: {
         handleClick (index) {
             this.$router.push(`/detail/${index}`)

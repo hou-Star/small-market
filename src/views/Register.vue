@@ -12,13 +12,13 @@
 	<mt-field label="个性签名" placeholder="个性签名" type="textarea" rows="4" v-model="introduction"></mt-field>
 	<el-upload
 	  class="avatar-uploader"
-	  action="https://localhost:3000/public/headImgs"
-	  :auto-upload=false
+	  action="http://localhost:3000/public/headImgs"
+	  :auto-upload="false"
 	  :show-file-list="false"
-	  :on-success="handleAvatarSuccess"
+	  :on-change="imgPreview"
+	  
 	  :before-upload="beforeAvatarUpload"
-	  :on-remove="handleRemove"
-	  ref="inputfile"   
+	  :on-remove="handleRemove"   
 	  >
 	  <img v-if="imageUrl" :src="imageUrl" class="avatar">
 	  <i v-else class="el-icon-plus avatar-uploader-icon"></i>
@@ -78,12 +78,21 @@ export default {
 		}
 	},
 	mounted(){
-		this.$store.state.tabbarShow = false;		
+		this.$store.commit("changeTabbarShow", false);		
 	},
 	beforeDestroy(){
-		this.$store.state.tabbarShow = true;		
+		this.$store.commit("changeTabbarShow", true);		
 	},
 	methods:{
+		imgPreview (file, fileList) {
+			console.log("file", file);
+			console.log("fileURL", file.url);
+			console.log("fileList", fileList);
+			
+		    this.imageUrl = URL.createObjectURL(file.raw);
+		    console.log(this.imageUrl,'缩略图');
+
+        },
 		handleClick(){
 			var input = document.querySelector('.el-upload__input');
 			console.log('input',input);

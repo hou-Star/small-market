@@ -9,7 +9,9 @@ export default new Vuex.Store({
   	uploadShow:false
   },
   mutations: {
-
+  	changeTabbarShow(state, payLoad){
+  		state.tabbarShow = payLoad;
+  	}
   },
   actions: {
 
