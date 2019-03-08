@@ -47,7 +47,11 @@
 			</div>
 
 			<ul class="fun-list">
-				<router-link to="/info" tag="li">我的消息
+				<router-link to="/info" tag="li">
+				<svg class="icon" aria-hidden="true">
+  <use xlink:href="#icon-wodexiaoxi5"></use>
+</svg>
+					<span>我的消息</span>
 					<a-icon type="right" class="myicon"/>
 				</router-link>
 				<router-link to="/info" tag="li">投诉
@@ -78,7 +82,7 @@ import "ant-design-vue/dist/antd.css";
 import Swiper from 'swiper'
 import "swiper/dist/css/swiper.css"
 import "swiper/dist/js/swiper.js"
-
+import "../assets/font/iconfont.js"
 Vue.component(Icon.name, Icon);
 Vue.component(Avatar.name, Avatar);
 
@@ -131,6 +135,13 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
 *{
 	margin:0;
 	padding:0;
@@ -142,22 +153,34 @@ ul{
 	width:100%;
 	height:150px;
 	background-color: orange;
+	background-image:url(https://assets.maizuo.com/h5/v5/public/app/img/bg.043a928.png);
+	background-repeat:no-repeat;
+	background-size:100% 100%;
 	overflow: hidden;
 	
 	.user-box{
 		float:left;
-		width:100px;
-		height:100px;
+		width:88px;
+		height:88px;
+		border:1px solid white;
+	
 		border-radius:50% !important;
 		overflow:hidden;
 		margin:20px;
 		.login{
-			width:100px;
-			height:100px;
+			width:80px;
+			height:80px;
+			margin: 3px;
+			border-radius:50% !important;
 			background-color:gray;
 			position:relative;
 			text-align: center;
 			line-height:100px;
+
+			background-image:url('../assets/img/unlogin.png');
+			background-repeat:no-repeat;
+			background-size:100% 100%;
+	
 			.headImg{
 				position:absolute;
 				left:0;

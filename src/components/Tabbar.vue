@@ -1,15 +1,38 @@
 <template>
   <div class="tabbar" v-show="$store.state.tabbarShow">
   	<ul>
-  	  <router-link tag='li' to="/home" activeClass="myactive">home</router-link>
+  	  <router-link tag='li' to="/home" activeClass="myactive">
+        <div>
+          <span class="iconfont icon-shouye2"></span>         
+        </div>
+        <div>
+          <span>首页</span>          
+        </div>
+      </router-link>
+
   	  <!-- activeClass是属性 -->
-  	  <router-link tag='li' to="/classify" activeClass="myactive">classify</router-link>
-  	  <router-link tag='li' to="/mine" activeClass="myactive">mine</router-link> 
+  	  <router-link tag='li' to="/classify" activeClass="myactive">
+        <div>
+          <span class="iconfont icon-fenlei2"></span>
+        </div>
+        <div>
+          <span>分类</span>
+        </div>
+      </router-link>
+
+  	  <router-link tag='li' to="/mine" activeClass="myactive">
+        <div>
+          <span class="iconfont icon-wode1"></span>
+        </div>
+        <div>
+          <span>我的</span>
+        </div>       
+      </router-link> 
   	</ul>
   </div>
 </template>
 
-<script>
+<script src="../assets/font/iconfont.js">
 // @ is an alias to /src
 
 
@@ -19,6 +42,13 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
 *{
   margin:0px;
   padding:0px;
@@ -45,11 +75,26 @@ ul{
   li{
     flex:1;
     text-align: center;
-    line-height:50px;
+
+    div:nth-of-type(1){
+      height:30px;
+      span{
+        
+      font-size:22px;
+      line-height:30px;
+      }
+    }
+    div:nth-of-type(2){
+      height:20px;
+      font-size:12px;
+      line-height:20px;
+    }
   }
 }
 .myactive{
   color:red;
 }	
 </style>
+
+<style src="../assets/font/iconfont.css"></style>
 
