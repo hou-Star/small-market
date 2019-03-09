@@ -17,7 +17,7 @@
   	</ul>
   	<ul class="product-list" v-if="products.length!==0">
   	    <li v-for="data in products" @click="handleClick(data._id)">
-  	      <img :src='"http://localhost:3000/" + data.productImg'/>
+  	      <img :src='"http://39.97.162.11" + data.productImg'/>
   	      <div class="describe-1">
   	        <span>{{productType[parseInt(data.productType)-1]}}</span>
   	        <span>￥{{data.productPrice}}</span>

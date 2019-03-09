@@ -4,7 +4,7 @@
 			<router-link to="/login" tag="div" class="user-box">
 				<!-- <a-avatar icon="user" size='100px'/> -->
 				<div class="login">
-					<img :src='"http://localhost:3000/" + headImg' class="headImg" v-show="uploadShow"/>
+					<img :src='"http://39.97.162.11" + headImg' class="headImg" v-show="uploadShow"/>
 					登录
 					<span>{{username}}</span>
 				</div>				

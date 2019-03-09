@@ -4,7 +4,7 @@
 	<h3>我已上传商品：<span>{{myProducts.length}}个</span></h3>	
 	<ul class="myUploadedProducts">
 		<li v-for="data in myProducts">
-			<img :src='"http://localhost:3000/"+data.productImg' alt="">
+			<img :src='"http://39.97.162.11"+data.productImg' alt="">
 			<span>{{data.productName}}</span>
 		</li>
 	</ul>

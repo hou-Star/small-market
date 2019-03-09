@@ -2,7 +2,7 @@
   <div class="detail">
 	<Headbar></Headbar>
 	<div class="soloDisplay" v-if="product.productName">
-		<img :src='"http://localhost:3000/" +product.productImg' class="productImg"/>
+		<img :src='"http://39.97.162.11" +product.productImg' class="productImg"/>
 		<div>
 			<p id="productTitle">{{product.productName}}</p>
 			<span>￥{{product.productPrice}}</span>
