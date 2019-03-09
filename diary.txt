@@ -23,3 +23,6 @@
 在home.vue页面用到了List组件，在list.vue也用到了List组件，
 前一个情况需要显示tabbar，后一种情况不需要显示tabbar。
 因为后一种情况是从classify.vue动态路由跳转过来的，所以会携带type=多少，在List组件的mounted生命周期中有条件地给tabbarShow赋值，出现不同的效果。
+
+
+2019.3.9   阿里icon字的添加，login.vue登录页面的美化，给上传商品upload.vue做了一个缓冲，分为了update.vue和upload.vue，在update.vue页面可以查看自己已经上传了多少商品，在upload.vue页面上传商品

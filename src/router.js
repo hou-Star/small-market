@@ -6,7 +6,9 @@ import Mine from './views/Mine.vue'
 import Register from './views/Register.vue'
 import Login from './views/Login.vue'
 import Info from './views/Info.vue' 
+import Complaint from './views/Complaint.vue'
 import Update from './views/Update.vue'
+import Upload from './views/Upload.vue'
 import About from './views/About.vue'
 import List from './components/List.vue'
 import Detail from './views/Detail.vue'
@@ -46,11 +48,21 @@ export default new Router({
       path: '/info',
       name: 'info',
       component: Info
-    },  
+    },
+    {
+      path: '/complaint',
+      name: 'complaint',
+      component: Complaint
+    },   
     {
       path: '/update',
       name: 'update',
       component: Update
+    },
+    {
+      path: '/upload',
+      name: 'upload',
+      component: Upload
     },  
     {
       path: '/about',

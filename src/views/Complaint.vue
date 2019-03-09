@@ -1,8 +1,8 @@
 
 <template>
-  <div class="info">
+  <div class="complaint">
   	<Headbar></Headbar>
-	我收到了哪些消息
+	提交投诉
   </div>
 </template>
 
@@ -13,12 +13,7 @@ import Headbar from '@/components/Headbar';
 
 Vue.component('Headbar', Headbar);
 export default {
-	mounted(){
-		this.$store.commit("changeTabbarShow", false);
-	},
-	beforeDestroy(){
-		this.$store.commit("changeTabbarShow", true);
-	}
+ 
 }
 </script>
 

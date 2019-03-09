@@ -12,30 +12,33 @@
 			<router-link to="/register" tag="span" class="toRegister" v-show="!uploadShow">
 				注册成为卖家
 			</router-link>
+			<router-link to="/register" tag="span" class="toRegister" v-show="uploadShow">
+				<span>{{username}}</span>
+			</router-link>
 		</div>
 		<div class="heart">
 			<div class="swiper-container">
-			  <div class="parallax-bg" style="background-image:url(https://www.swiper.com.cn/demo/img/Parallax.jpg)" data-swiper-parallax="-23%"></div>
+			  <div class="parallax-bg" style="background-image:url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1552107815669&di=7a02927be05c47657ede4242536923c9&imgtype=0&src=http%3A%2F%2Fimg01.jituwang.com%2F180130%2F256718-1P13021562022.jpg)" data-swiper-parallax="-23%"></div>
 			  <div class="swiper-wrapper">
 			    <div class="swiper-slide">
-			      <div class="title" data-swiper-parallax="-300">Slide 1</div>
-			      <div class="subtitle" data-swiper-parallax="-200">Subtitle</div>
+			      <!-- <div class="title" data-swiper-parallax="-300">Slide 1</div> -->
+			      <div class="subtitle" data-swiper-parallax="-200">通知一</div>
 			      <div class="text" data-swiper-parallax="-100">
-			        <p>通知一</p>
+			        <p>注册成为卖家，才可以上传商品信息哦</p>
 			      </div>
 			    </div>
 			    <div class="swiper-slide">
-			      <div class="title" data-swiper-parallax="-300" data-swiper-parallax-opacity="0">Slide 2</div>
-			      <div class="subtitle" data-swiper-parallax="-200">Subtitle</div>
+			      <!-- <div class="title" data-swiper-parallax="-300" data-swiper-parallax-opacity="0">Slide 2</div> -->
+			      <div class="subtitle" data-swiper-parallax="-200">通知二</div>
 			      <div class="text" data-swiper-parallax="-100">
-			        <p>通知二</p>
+			        <p>本网站为纯公益网站</p>
 			      </div>
 			    </div>
 			    <div class="swiper-slide">
-			      <div class="title" data-swiper-parallax="-300">Slide 3</div>
-			      <div class="subtitle" data-swiper-parallax="-200">Subtitle</div>
+			      <!-- <div class="title" data-swiper-parallax="-300">Slide 3</div> -->
+			      <div class="subtitle" data-swiper-parallax="-200">通知三</div>
 			      <div class="text" data-swiper-parallax="-100">
-			        <p>通知三</p>
+			        <p>本网站只提供信息展示平台，找到心仪的商品后请自觉与卖家联系</p>
 			      </div>
 			    </div>
 			  </div>
@@ -47,20 +50,37 @@
 			</div>
 
 			<ul class="fun-list">
+
 				<router-link to="/info" tag="li">
-				<svg class="icon" aria-hidden="true">
-  <use xlink:href="#icon-wodexiaoxi5"></use>
-</svg>
+					<svg class="icon" aria-hidden="true">
+  						<use xlink:href="#icon-wodexiaoxi5"></use>
+					</svg>
 					<span>我的消息</span>
 					<a-icon type="right" class="myicon"/>
 				</router-link>
-				<router-link to="/info" tag="li">投诉
+
+				<router-link to="/complaint" tag="li">
+					<svg class="icon" aria-hidden="true">
+  						<use xlink:href="#icon-wodetousu"></use>
+					</svg>
+					<span>投诉</span>
 					<a-icon type="right" class="myicon"/>
 				</router-link>
-				<router-link to="/update" tag="li" v-show="uploadShow">上传商品
+				
+
+				<router-link to="/update" tag="li" v-show="uploadShow">
+					<svg class="icon" aria-hidden="true">
+  						<use xlink:href="#icon-shangpin3"></use>
+					</svg>
+					<span>上传商品</span>
 					<a-icon type="right" class="myicon"/>
 				</router-link>
-				<router-link to="/about" tag="li">关于我们
+
+				<router-link to="/about" tag="li">
+					<svg class="icon" aria-hidden="true">
+  						<use xlink:href="#icon-guanyuwomen2"></use>
+					</svg>
+					<span>关于我们</span>
 					<a-icon type="right" class="myicon"/>
 				</router-link>			
 				<!-- <li><a-icon type="right" class="myicon"/>我的消息</li> -->
@@ -187,12 +207,14 @@ ul{
 				top:0;
 				width:100%;
 				height:100%;
+				border-radius:50% !important;
 			}
 		}
 	}
 	.toRegister{
 		float:right;
 		margin:60px 60px 0 20px;
+		color:white;
 	}
 }
 .heart{
@@ -214,6 +236,13 @@ ul{
 		height:50px;
 		border-bottom: 1px gray solid;
 		position:relative;
+		font-size:20px;
+		line-height:50px;
+		text-indent: 20px;
+		span{
+			font-size:16px;
+			margin-left: 10px;
+		}
 		.myicon{
 			position:absolute;
 			right:0;
