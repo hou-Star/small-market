@@ -4,17 +4,21 @@
 			<router-link to="/login" tag="div" class="user-box">
 				<!-- <a-avatar icon="user" size='100px'/> -->
 				<div class="login">
-					<img :src='"http://39.97.162.11" + headImg' class="headImg" v-show="uploadShow"/>
+					<img :src='"http://39.97.162.11:8000" + headImg' class="headImg" v-show="uploadShow"/>
 					登录
-					<span>{{username}}</span>
+					
 				</div>				
 			</router-link>
+			<span class="toLogout" v-show="uploadShow" @click="logout">
+				注销
+			</span>
 			<router-link to="/register" tag="span" class="toRegister" v-show="!uploadShow">
 				注册成为卖家
 			</router-link>
-			<router-link to="/register" tag="span" class="toRegister" v-show="uploadShow">
-				<span>{{username}}</span>
-			</router-link>
+			<span class="showName" v-show="uploadShow">
+				{{username}}
+			</span>
+
 		</div>
 		<div class="heart">
 			<div class="swiper-container">
@@ -96,6 +100,7 @@
 
 import "ant-design-vue/dist/antd.css";
 import Vue from 'vue'
+import axios from 'axios';
 import Icon from "ant-design-vue/lib/icon";
 import Avatar from "ant-design-vue/lib/avatar";
 import "ant-design-vue/dist/antd.css";
@@ -115,12 +120,25 @@ export default {
 		return{
 			username:"",
 			headImg:"",
-			uploadShow:null		
+			uploadShow:false		
 		}
 	},
 	methods:{
 		handleClick(){
 			console.log('aaa');
+		},
+		logout(){
+			console.log("点击注销登录");
+			axios({
+				url:'/logout',
+			}).then(res=>{
+				console.log('从后端返回，成功注销');
+				console.log(res);
+				if(res.data.ok===1){
+					this.uploadShow = false;
+					sessionStorage.removeItem('person');
+				}
+			});
 		}
 	},
 	mounted(){
@@ -215,6 +233,16 @@ ul{
 		float:right;
 		margin:60px 60px 0 20px;
 		color:white;
+	}
+	.toLogout{
+		float:right;
+		margin:60px 60px 0 20px;
+		color:white;	
+	}
+	.showName{
+		float:right;
+		margin:60px 60px 0 -100px;
+		color:white;		
 	}
 }
 .heart{

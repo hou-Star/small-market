@@ -34,6 +34,12 @@ module.exports = {
 	           changeOrigin: true
 
 	       },
+	       '/logout': {
+	           target: 'http://localhost:3000',
+	           host: 'localhost',
+	           changeOrigin: true
+
+	       },
 	       '/getProducts': {
 	           target: 'http://localhost:3000',
 	           host: 'localhost',
