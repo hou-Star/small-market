@@ -26,3 +26,4 @@
 
 
 2019.3.9   阿里icon字的添加，login.vue登录页面的美化，给上传商品upload.vue做了一个缓冲，分为了update.vue和upload.vue，在update.vue页面可以查看自己已经上传了多少商品，在upload.vue页面上传商品
+2019.3.15  前端页面实现logout
