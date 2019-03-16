@@ -52,6 +52,18 @@ module.exports = {
 	           changeOrigin: true
 
 	       },
+	       '/modifyProd': {
+	           target: 'http://localhost:3000',
+	           host: 'localhost',
+	           changeOrigin: true
+
+	       },
+	       '/delProd': {
+	           target: 'http://localhost:3000',
+	           host: 'localhost',
+	           changeOrigin: true
+
+	       },	       
 	       '/getMyProducts': {
 	           target: 'http://localhost:3000',
 	           host: 'localhost',

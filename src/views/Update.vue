@@ -4,8 +4,10 @@
 	<h3>我已上传商品：<span>{{myProducts.length}}个</span></h3>	
 	<ul class="myUploadedProducts">
 		<li v-for="data in myProducts">
-			<img :src='"http://39.97.162.11:8000"+data.productImg' alt="">
+			<img :src='$store.state.imgReq + data.productImg' alt="">
 			<span>{{data.productName}}</span>
+			<button @click="ModifyProd(data._id)">修改</button>
+			<button @click="delProd(data._id)">删除</button>
 		</li>
 	</ul>
   	
@@ -56,6 +58,19 @@ export default {
 	  //提交表单的方法
 	  onSubmit() {
 		this.$router.push('/upload');		
+	  },
+	  delProd(index){
+	  	axios({
+	  		url:'/delProd',
+	  		method: 'post',
+	  		data:{_id: index }
+	  	}).then(res=>{
+	  		this.myProducts.splice(index+1, 1);
+	  		console.log("删除成功");
+	  	});
+	  },
+	  ModifyProd(index){
+	  	this.$router.push(`/modifyProd/${index}`);
 	  }
 	} 
 }

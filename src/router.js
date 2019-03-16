@@ -9,6 +9,7 @@ import Info from './views/Info.vue'
 import Complaint from './views/Complaint.vue'
 import Update from './views/Update.vue'
 import Upload from './views/Upload.vue'
+import ModifyProd from './views/ModifyProd.vue'
 import About from './views/About.vue'
 import List from './components/List.vue'
 import Detail from './views/Detail.vue'
@@ -63,6 +64,11 @@ export default new Router({
       path: '/upload',
       name: 'upload',
       component: Upload
+    }, 
+    {
+      path: '/modifyProd/:id',
+      name: 'modifyProd',
+      component: ModifyProd
     },  
     {
       path: '/about',
